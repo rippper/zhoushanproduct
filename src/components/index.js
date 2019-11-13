@@ -1,0 +1,1 @@
+export { default as headerFix } from './headerFix.vue'
