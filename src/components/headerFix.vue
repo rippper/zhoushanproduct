@@ -85,12 +85,12 @@ export default {
     methods: {
         bannerTo () {
             if (this.currentIndex == 0) {
-                this.$refs.bannerImg[0].style.opacity = 0
-                this.$refs.bannerImg[1].style.opacity = 1
+                this.$refs.bannerImg[0].style.opacity = '0'
+                this.$refs.bannerImg[1].style.opacity = '1'
                 this.currentIndex = 1
             } else {
-                this.$refs.bannerImg[1].style.opacity = 0
-                this.$refs.bannerImg[0].style.opacity = 1
+                this.$refs.bannerImg[1].style.opacity = '0'
+                this.$refs.bannerImg[0].style.opacity = '1'
                 this.currentIndex = 0
             }
         }
