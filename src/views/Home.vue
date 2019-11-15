@@ -80,8 +80,111 @@
                     </ul>
                 </div>
                 <div class="home_middlebottom_rightpart">
-
+                    <div class="home_quickpass">
+                        <div class="home_quickpass_title">
+                            快捷通道
+                        </div>
+                        <div class="home_quickpass_list">
+                            <ul>
+                                <li>
+                                    <a class="home_qp_sc" href="javascript:;"></a>
+                                </li>
+                                <li>
+                                    <a class="home_qp_ed" href="javascript:;"></a>
+                                </li>
+                                <li>
+                                    <a class="home_qp_mr" href="javascript:;"></a>
+                                </li>
+                                <li>
+                                    <a class="home_qp_pt" href="javascript:;"></a>
+                                </li>
+                                <li>
+                                    <a class="home_qp_dl" href="javascript:;"></a>
+                                </li>
+                            </ul>
+                        </div>
+                    </div>
+                    <div class="home_collage_hotpart">
+                        <div class="home_hotpart_title">
+                            学院亮点
+                        </div>
+                        <div class="home_hotpart_list">
+                            <ul>
+                                <li v-for="(item, index) in hotpot" :key="index">
+                                    <span class="home_list_title" v-text="item.title"></span>
+                                    <span class="home_list_date" v-text="item.time"></span>
+                                </li>
+                            </ul>
+                        </div>
+                    </div>
                 </div>
+            </div>
+            <div class="home_ad">
+                <ul>
+                    <li :class="{'ad_action': item.jugment}" v-for="(item, index) in advpart" :key="index">
+                        <a href="javascript:;">
+                            <img :src="item.Image" alt="">
+                        </a>
+                    </li>
+                </ul>
+            </div>
+            <div class="home_listroll">
+                <div class="home_listroll_title">
+                    <div class="home_title_label">
+                        校园风光
+                    </div>
+                    <div class="home_title_loadmore">+ MORE</div>
+                </div>
+                <div class="home_listroll_list">
+                    <ul ref="rollpart" @mouseenter="rollStop" @mouseleave="rollStart">
+                        <li v-for="(item, index) in rollpart" :key="index">
+                            <img :src="item.Image" alt="">
+                            <p><a href="javascript:;" v-text="item.msg"></a></p>
+                        </li>
+                    </ul>
+                </div>
+            </div>
+            <div class="home_friendlylink">
+                <div class="home_friendlylink_title">
+                    <div class="home_friendly_label">
+                        <span class="home_friendship">友情</span><span class="home_linkto">链接/LINK</span>
+                    </div>
+                </div>
+                <div class="home_friendlylink_list">
+                    <ul>
+                        <li v-for="(item, index) in friendLink" :key="index">
+                            <a :href="item.Address" target="_blank">
+                                <img :src="item.Image">
+                            </a>
+                        </li>
+                    </ul>
+                </div>
+            </div>
+        </div>
+        <div class="home_footer">
+            <div class="home_footer_selectoption">
+                <ul>
+                    <li>
+                        <select>
+                            <option>中央部门电站</option>
+                        </select>
+                    </li>
+                    <li>
+                        <select>
+                            <option>全国省会城市网站</option>
+                        </select>
+                    </li>
+                    <li>
+                        <select>
+                            <option>国内主要城市网站</option>
+                        </select>
+                    </li>
+                    <li>
+                        <select>
+                            <option>省内其他网站</option>
+                        </select>
+                    </li>
+                </ul>
             </div>
         </div>
     </div>
@@ -89,6 +192,7 @@
 
 <script>
 import { headerFix, tabChild, specialTeach } from '../components'
+import { GetArticleChannelInfoList } from '../service/getData'
 export default {
     name: 'Home',
     data () {
@@ -122,7 +226,9 @@ export default {
             currentIndex: 1,
             tabsIndex: 0,
             newsIndex: 0,
+            adIndex: 0,
             bannerRobot: '',
+            rollpartRobot: '',
             tabInfor: [
                 {
                     title: '学院动态',
@@ -374,6 +480,138 @@ export default {
                         }
                     ]
                 }
+            ],
+            hotpot: [
+                {
+                    title: '舟山老年开放大学召开',
+                    time: '[09/04]'
+                },
+                {
+                    title: '舟山老年开放大学召开',
+                    time: '[09/04]'
+                },
+                {
+                    title: '舟山老年开放大学召开',
+                    time: '[09/04]'
+                },
+                {
+                    title: '舟山老年开放大学召开',
+                    time: '[09/04]'
+                }
+            ],
+            advpart: [
+                {
+                    Image: require('../assets/lxyz01.png'),
+                    jugment: true
+                },
+                {
+                    Image: require('../assets/lxyz02.png'),
+                    jugment: false
+                },
+                {
+                    Image: require('../assets/lxyz03.png'),
+                    jugment: false
+                },
+            ],
+            rollpart: [
+                {
+                    Image: require('../assets/zyb-fengjin1.jpg'),
+                    msg: 'aaaaa'
+                },
+                {
+                    Image: require('../assets/zyb-fengjin2.jpg'),
+                    msg: 'bbbbb'
+                },
+                {
+                    Image: require('../assets/zyb-fengjin3.jpg'),
+                    msg: 'ccccc'
+                },
+                {
+                    Image: require('../assets/zyb-fengjin4.jpg'),
+                    msg: 'ddddd'
+                },
+                {
+                    Image: require('../assets/zyb-fengjin5.jpg'),
+                    msg: 'eeeee'
+                },
+                {
+                    Image: require('../assets/zyb-fengjin6.jpg'),
+                    msg: 'fffff'
+                },
+                {
+                    Image: require('../assets/zyb-fengjin7.jpg'),
+                    msg: 'ggggg'
+                },
+                {
+                    Image: require('../assets/zyb-fengjin1.jpg'),
+                    msg: 'aaaaa'
+                },
+                {
+                    Image: require('../assets/zyb-fengjin2.jpg'),
+                    msg: 'bbbbb'
+                },
+                {
+                    Image: require('../assets/zyb-fengjin3.jpg'),
+                    msg: 'ccccc'
+                },
+                {
+                    Image: require('../assets/zyb-fengjin4.jpg'),
+                    msg: 'ddddd'
+                },
+                {
+                    Image: require('../assets/zyb-fengjin5.jpg'),
+                    msg: 'eeeee'
+                },
+                {
+                    Image: require('../assets/zyb-fengjin6.jpg'),
+                    msg: 'fffff'
+                },
+                {
+                    Image: require('../assets/zyb-fengjin7.jpg'),
+                    msg: 'ggggg'
+                }
+            ],
+            friendLink: [
+                {
+                    Image: require('../assets/link_01.png'),
+                    Address: ''
+                },
+                {
+                    Image: require('../assets/link_02.png'),
+                    Address: ''
+                },
+                {
+                    Image: require('../assets/link_03.png'),
+                    Address: ''
+                },
+                {
+                    Image: require('../assets/link_04.png'),
+                    Address: ''
+                },
+                {
+                    Image: require('../assets/link_05.png'),
+                    Address: ''
+                },
+                {
+                    Image: require('../assets/link_06.png'),
+                    Address: ''
+                },
+                {
+                    Image: require('../assets/link_07.png'),
+                    Address: ''
+                },
+                {
+                    Image: require('../assets/link_08.png'),
+                    Address: ''
+                },
+                {
+                    Image: require('../assets/link_09.png'),
+                    Address: ''
+                },
+                {
+                    Image: require('../assets/link_10.png'),
+                    Address: ''
+                }
             ]
         }
     },
@@ -383,6 +621,12 @@ export default {
             this.currentIndex++
             this.bannerTo(this.currentIndex)
         },5000)
+        setInterval(() => {
+            this.adIndex++
+            this.adChange(this.adIndex)
+        }, 5000)
+        this.rollStart()
+        this.render()
     },
     methods: {
         bannerTo (index) {
@@ -442,6 +686,32 @@ export default {
         },
         newTabsChange (index) {
             this.newsIndex = index
+        },
+        adChange (index) {
+            if (index == 2) {
+                this.adIndex = -1
+            }
+            this.advpart.forEach(item => {
+                item.jugment = false
+            })
+            this.advpart[index].jugment= true
+        },
+        rollStop () {
+            clearInterval(this.rollpartRobot)
+        },
+        rollStart () {
+            this.rollpartRobot = setInterval(() => {
+                this.$refs.rollpart.style.left = this.$refs.rollpart.offsetLeft - 1 + 'px'
+                if (this.$refs.rollpart.offsetLeft <= -1274) {
+                    this.$refs.rollpart.style.left = '0px'
+                }
+            }, 30)
+        },
+        async render () {
+            let msg = await GetArticleChannelInfoList({
+                parentId: 0
+            })
+            console.log(msg)
         }
     },
     components: {
@@ -460,9 +730,11 @@ export default {
         height: 2000px;
         margin: 0 auto;
         background: url('../assets/zsbg.jpg') no-repeat;
+        background-size: 100% 100%;
         .home_bodypart{
             width:1042px;
             margin: 10px auto;
+            padding-bottom: 20px;
             background: #fff;
             .home_bodypart_toppart{
                 width: 1023px;
@@ -729,7 +1001,7 @@ export default {
             .home_bodypart_middlebottom{
                 width: 1004px;
                 height: 625px;
-                margin: 14px auto;
+                margin: 14px auto 0;
                 @extend %clearFix;
                 .home_middlebottom_leftpart{
                     float: left;
@@ -751,10 +1023,235 @@ export default {
                     }
                 }
                 .home_middlebottom_rightpart{
-                    float: right;
+                    float: left;
+                    .home_quickpass{
+                        width: 257px;
+                        margin-left: 8px;
+                        border: 1px solid #8dbeec;
+                        .home_quickpass_title{
+                            background: url('../assets/zspx_bg.png') no-repeat;
+                            width: 151px;
+                            height: 34px;
+                            text-indent: 24px;
+                            line-height: 34px;
+                            font-size: 14px;
+                            font-weight: bold;
+                            color: #116abf;
+                        }
+                        .home_quickpass_list{
+                            padding-top: 15px;
+                            background: url('../assets/oa_listbg.png') no-repeat;
+                            ul{
+                                li{
+                                    margin-bottom: 14px;
+                                    a{
+                                        display: block;
+                                        margin: 0 auto;
+                                        width:237px;
+                                        height:50px;
+                                    }
+                                    .home_qp_sc{
+                                        background: url('../assets/xxoa.png') no-repeat;
+                                    }
+                                    .home_qp_ed{
+                                        background: url('../assets/jyoa.png') no-repeat;
+                                    }
+                                    .home_qp_mr{
+                                        background: url('../assets/yzxx.png') no-repeat;
+                                    }
+                                    .home_qp_pt{
+                                        background: url('../assets/ssxpt.png') no-repeat;
+                                    }
+                                    .home_qp_dl{
+                                        background: url('../assets/yjzx.png') no-repeat;
+                                    }
+                                }
+                            }
+                        }
+                    }
+                    .home_collage_hotpart{
+                        width: 257px;
+                        height: 174px;
+                        border: 1px solid #3fa8f2;
+                        border-top: 2px solid #3fa8f2;
+                        margin: 13px 0 0 8px;
+                        .home_hotpart_title{
+                            width: 151px;
+                            height: 34px;
+                            line-height: 34px;
+                            margin-bottom: 6px;
+                            background: url('../assets/zspx_bg.png') no-repeat;
+                            text-indent: 24px;
+                            color: #116abf;
+                            font-weight: bold;
+                            
+                        }
+                        .home_hotpart_list{
+                            width: 100%;
+                            height: 130px;
+                            background: url('../assets/sqjy_bg1.png') no-repeat 0 -30px;
+                            margin-top: 3px;
+                            ul{
+                                li{
+                                    background: url('../assets/◆.png') no-repeat 0 10px;
+                                    height: 28px;
+                                    margin-left: 13px;
+                                    line-height: 28px;
+                                    text-indent: 14px;
+                                    @extend %clearFix;
+                                    &:hover{
+                                        background: url('../assets/◆-action.png') no-repeat 0 10px;
+                                        color: #b60a00;
+                                    }
+                                    .home_list_title{
+                                        width: 160px;
+                                        text-overflow: ellipsis;
+                                        overflow: hidden;
+                                        white-space: nowrap;
+                                        cursor: pointer;
+                                        float: left;
+                                    }
+                                    .home_list_date{
+                                        cursor: pointer;
+                                        float: right;
+                                    }
+                                }
+                            }
+                        }
+                    }
                 }
             }
-            
+            .home_ad{
+                width: 1004px;
+                margin: 10px auto 0;
+                ul{
+                    height: 119px;
+                    position: relative;
+                    li{
+                        position: absolute;
+                        top: 9px;
+                        left:0;
+                        opacity: 0;
+                        transition: 0.5s;
+                        a{
+                            display: inline-block;
+                        }
+                    }
+                    .ad_action{
+                        opacity: 1;
+                    }
+                }
+            }
+            .home_listroll{
+                width: 1006px;
+                margin: 0 auto;
+                margin-top: 8px;
+                height: 192px;
+                background: url('../assets/xyfg_bg.png') no-repeat;
+                border: 1px solid #8dbeec;
+                border-top: 1px solid #3fa8f2;
+                .home_listroll_title{
+                    height: 42px;
+                    line-height: 42px;
+                    @extend %clearFix;
+                    .home_title_label{
+                        float:left;
+                        color: #116abf;
+                        margin-left: 11px;
+                        font-weight: bold;
+                        font-style: 14px;
+                    }
+                    .home_title_loadmore{
+                        float: right;
+                        color: #116abf;
+                        font-size: 12px;
+                        font-weight: bold;
+                        margin-right: 16px; 
+                    }
+                }
+                .home_listroll_list{
+                    width: 976px;
+                    height: 142px;
+                    padding: 14px 0 5px;
+                    margin: 0 auto;
+                    overflow: hidden;
+                    position:relative;
+                    ul{
+                        @extend %clearFix;
+                        width: 2548px;
+                        position: absolute;
+                        li{
+                            float:left;
+                            width: 166px;
+                            margin: 0 8px; 
+                            img{
+                                width: 166px;
+                                height: 102px;
+                                cursor: pointer;
+                            }
+                            p{
+                                text-align: center;
+                            }
+                        }
+                    }
+                }
+            }
+            .home_friendlylink{
+                width:1004px;
+                margin: 15px auto 0;
+                height: 185px;
+                border: 1px solid #eee;
+                border-top: 2px solid #3fa8f2;
+                .home_friendlylink_title{
+                    height: 40px;
+                    .home_friendly_label{
+                        padding: 13px 0 0 15px;
+                        .home_friendship{
+                            display: inline-block;
+                            padding: 0 2px;
+                            margin-right: 5px;
+                            background: #116abf;
+                            color: #fff;
+                        }
+                        .home_linkto{
+                            color: #116abf;
+                        }
+                    }
+                }
+                .home_friendlylink_list{
+                    margin-top: 5px;
+                    ul{
+                        @extend %clearFix;
+                        li{
+                            float:left;
+                            margin: 0 0 12px 15px;
+                            width:182px;
+                            height:57px;
+                        }
+                    }
+                }
+            }
+        }
+        .home_footer{
+            width: 1042px;
+            margin: 20px auto;
+            .home_footer_selectoption{
+                ul{
+                    @extend %clearFix;
+                    width: 860px;
+                    height: 24px;
+                    margin: 0 auto;
+                    li{
+                        float:left;
+                        margin-right: 30px;
+                        select{
+                            width:185px;
+                            border: 1px solid #c3c3c3;
+                            color: #000;
+                        }
+                    }
+                }
+            }
         }
     }
 </style>

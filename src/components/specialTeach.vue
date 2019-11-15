@@ -51,6 +51,9 @@ export default {
                 let date = new Date(item.dates)
                 let mouth = date.getMonth() + 1
                 let day = date.getDate()
+                if (day < 10) {
+                    day = '0' + day
+                }
                 item.dates = '[' + mouth + '/' + day + ']'
             });
         },
