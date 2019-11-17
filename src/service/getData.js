@@ -6,8 +6,8 @@ import fetch from './fetch'
  */
 export const CheckUserIsExit = (data) => fetch.get(Api.CheckAccountExit.url,
   { ...Api.CheckAccountExit.data, ...data })
-export const GetArticleChannelInfoList = (data) => fetch.post(Api.GetArticleChannelInfoList.url,
-  { ...Api.GetArticleChannelInfoList.data, ...data })
+export const GetArticleInfoList = (data) => fetch.post(Api.GetArticleInfoList.url,
+  { ...Api.GetArticleInfoList.data, ...data })
 /* 将所有的API封装起来 */
 const allApi = {}
 for (let key in Api) {

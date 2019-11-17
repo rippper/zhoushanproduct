@@ -114,13 +114,17 @@ export default {
       url,
       data
     }).then(
+      (response) => {
+        return response.data
+      }
+    ).then(
       (res) => {
         return checkCode(res)
       }
     ).catch(
       (err) => {
         console.log(err)
-        // loading.close()
+      //   loading.close()
       // Message('服务器异常')
       }
     )
@@ -132,6 +136,10 @@ export default {
       },
       ...config
     }).then(
+      (response) => {
+        return response.data
+      }
+    ).then(
       (res) => {
         return checkCode(res)
       }
@@ -149,6 +157,10 @@ export default {
       url,
       params: params
     }).then(
+      (response) => {
+        return response.data
+      }
+    ).then(
       (res) => {
         return checkCode(res)
       }

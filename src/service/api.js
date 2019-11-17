@@ -7,8 +7,8 @@ const article = '/article'
 // const Collection = '/Collection'
 export default {
 
-  GetArticleChannelInfoList: {
-    url: API_URL + article + '/GetArticleChannelInfoList',
+  GetArticleInfoList: {
+    url: API_URL + article + '/GetArticleInfoList',
     data: {}
   }
   
