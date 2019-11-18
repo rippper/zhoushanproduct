@@ -116,22 +116,8 @@ export default {
         this.render()
     },
     methods: {
-        goMenuList (item, menu) {
-            // console.log(item, menu)
-            menu.forEach((itemS) => {
-                // 使用set方法时 不用遍历从接口获得的数据添加isClick set方法可以添加原数组没有的参数且不改变数组
-                // 通过这个添加的参数来进行数据操作
-                // this.$set(itemS,'isClick', false)
-                itemS.isClick = false
-            })
-            item.isClick = true
-            // this.$set(item,'isClick', true)
-            this.CategoryId = item.Id
-            this.articleList = []
-            this.startDate = ''
-            this.endDate = ''
-            this.keyword = ''
-            this.getArticleInfoList()
+        goMenuList (item) {
+            this.$router.push({ path: 'newslist', query: { Id: this.ListId, CId: item.Id } })
         },
         handleCurrentChange (val) {
             this.articleList = []
@@ -163,11 +149,10 @@ export default {
         }
     },
     watch: {
-        'ListId' () {
-            console.log(111)
-        },
-        'CId' () {
-            console.log(111)
+        $route () {
+            this.ListId = this.$route.query.Id
+            this.CId = this.$route.query.CId
+            this.render()
         }
     },
     components: {

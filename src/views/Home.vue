@@ -590,43 +590,43 @@ export default {
             friendLink: [
                 {
                     Image: require('../assets/link_01.png'),
-                    Address: ''
+                    Address: 'http://www.moe.gov.cn/'
                 },
                 {
                     Image: require('../assets/link_02.png'),
-                    Address: ''
+                    Address: 'http://www.zjedu.gov.cn/'
                 },
                 {
                     Image: require('../assets/link_03.png'),
-                    Address: ''
+                    Address: 'http://www.zhoushan.gov.cn/'
                 },
                 {
                     Image: require('../assets/link_04.png'),
-                    Address: ''
+                    Address: 'http://www.zjedu.org/'
                 },
                 {
                     Image: require('../assets/link_05.png'),
-                    Address: ''
+                    Address: 'http://zsjy.zhoushan.gov.cn/'
                 },
                 {
                     Image: require('../assets/link_06.png'),
-                    Address: ''
+                    Address: 'http://www.dinghai.gov.cn/col/col1495746/index.html'
                 },
                 {
                     Image: require('../assets/link_07.png'),
-                    Address: ''
+                    Address: 'http://www.ssjy.net/'
                 },
                 {
                     Image: require('../assets/link_08.png'),
-                    Address: ''
+                    Address: 'http://www.pkudl.cn/index.asp'
                 },
                 {
                     Image: require('../assets/link_09.png'),
-                    Address: ''
+                    Address: 'http://www.zsxxnet.cn'
                 },
                 {
                     Image: require('../assets/link_10.png'),
-                    Address: ''
+                    Address: 'http://www.cnzx.info/'
                 }
             ]
         }
