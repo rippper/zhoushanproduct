@@ -1,13 +1,17 @@
 import Api from './api'
 import fetch from './fetch'
 
-/**
- * 判断用户是否存在KeepOnline
+/*
+ * 获取文章类型列表 
  */
-export const CheckUserIsExit = (data) => fetch.get(Api.CheckAccountExit.url,
-  { ...Api.CheckAccountExit.data, ...data })
+export const GetArticleChannelInfoList = (data) => fetch.post(Api.GetArticleChannelInfoList.url,
+  { ...Api.GetArticleChannelInfoList.data, ...data })
+/*
+ * 获取文章详细类型列表 
+ */
 export const GetArticleInfoList = (data) => fetch.post(Api.GetArticleInfoList.url,
   { ...Api.GetArticleInfoList.data, ...data })
+
 /* 将所有的API封装起来 */
 const allApi = {}
 for (let key in Api) {

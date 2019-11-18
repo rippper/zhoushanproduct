@@ -207,7 +207,7 @@
 
 <script>
 import { headerFix, tabChild, specialTeach } from '../components'
-import { GetArticleInfoList } from '../service/getData'
+// import {  } from '../service/getData'
 export default {
     name: 'Home',
     data () {
@@ -243,6 +243,7 @@ export default {
             newsIndex: 0,
             adIndex: 0,
             bannerRobot: '',
+            advRobot: '',
             rollpartRobot: '',
             tabInfor: [
                 {
@@ -636,12 +637,17 @@ export default {
             this.currentIndex++
             this.bannerTo(this.currentIndex)
         },5000)
-        setInterval(() => {
+        this.advRobot = setInterval(() => {
             this.adIndex++
             this.adChange(this.adIndex)
         }, 5000)
         this.rollStart()
-        this.render()
+        // this.render()
+    },
+    beforeDestroy () {
+        clearInterval(this.bannerRobot)
+        clearInterval(this.advRobot)
+        clearInterval(this.rollpartRobot)
     },
     methods: {
         bannerTo (index) {
@@ -721,13 +727,8 @@ export default {
                     this.$refs.rollpart.style.left = '0px'
                 }
             }, 30)
-        },
-        async render () {
-            let msg = await GetArticleInfoList({
-                parentId: 0
-            })
-            console.log(msg)
         }
+
     },
     components: {
         headerFix,
@@ -1154,6 +1155,7 @@ export default {
                     }
                     .ad_action{
                         opacity: 1;
+                        z-index: 10;
                     }
                 }
             }

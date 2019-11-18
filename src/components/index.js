@@ -1,3 +1,6 @@
 export { default as headerFix } from './headerFix.vue'
 export { default as tabChild } from './tabChild.vue'
 export { default as specialTeach } from './specialTeach.vue'
+export { default as menuList } from './menuList.vue'
+export { default as articleTableList } from './articleTableList.vue'
+export { default as footerFix } from './footerFix.vue'

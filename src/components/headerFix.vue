@@ -10,11 +10,14 @@
         </div>
         <div class="headerpart_nav">
             <ul>
+                <li>
+                    <router-link to="/">首页</router-link>
+                </li>
                 <li v-for="(item, index) in navContent" :key="index">
-                    <a href="javascript:;" v-text="item.name"></a>
+                    <router-link :to="{ path: '/newslist', query: { 'Id':item.Id, 'CId': 0} }" v-text="item.Name"></router-link>
                     <ul>
-                        <li v-for="(childitem, childindex) in item.childOption" :key="childindex">
-                            <a href="javascript:;" v-text="childitem"></a>
+                        <li v-for="(childitem, childindex) in item.Nodes" :key="childindex">
+                            <router-link :to="{ path: '/newslist', query: { 'Id':item.Id, 'CId': childitem.Id } }" v-text="childitem.Name"></router-link>
                         </li>
                     </ul>
                 </li>
@@ -24,6 +27,7 @@
 </template>
 
 <script>
+import { GetArticleChannelInfoList } from '../service/getData'
 export default {
     name: 'headerFix',
     data () {
@@ -40,47 +44,52 @@ export default {
             ],
             currentIndex: 0,
             navContent: [
-                {
-                    name: '首页',
-                    childOption: []
-                }, 
-                {
-                    name: '学院状况',
-                    childOption: ['学院简介', '机构设置', '学院动态', '杰出校友库', '学院领导']
-                }, 
-                {
-                    name: '院务公开',
-                    childOption: ['通知公告', '政策文件', '收费标准', '规章制度', '招生专栏', '内部公告']
-                }, 
-                {
-                    name:'学院党建',
-                    childOption: ['宣教动态', '学习资料', '心得交流']
-                }, 
-                {
-                    name:'团委工会',
-                    childOption: []
-                }, 
-                {
-                    name:'职成教研',
-                    childOption: ['教研文件', '获奖信息', '教师研修', '资源中心']
-                },
-                {
-                    name:'社区教育',
-                    childOption: ['政策法规', '家庭教育', '社区动态', '老年教育', '通告公告']
-                },
-                {
-                    name:'远程教育',
-                    childOption: ['办学动态', '通知公告', '学生园地', '招生信息']
-                },
-                {
-                    name:'档案园地',
-                    childOption: []
-                }
-            ]
+                // {
+                //     Name: '首页',
+                //     Nodes: []
+                // }, 
+                // {
+                //     Name: '学院状况',
+                //     Nodes: ['学院简介', '机构设置', '学院动态', '杰出校友库', '学院领导']
+                // }, 
+                // {
+                //     Name: '院务公开',
+                //     Nodes: ['通知公告', '政策文件', '收费标准', '规章制度', '招生专栏', '内部公告']
+                // }, 
+                // {
+                //     Name:'学院党建',
+                //     Nodes: ['宣教动态', '学习资料', '心得交流']
+                // }, 
+                // {
+                //     Name:'团委工会',
+                //     Nodes: []
+                // }, 
+                // {
+                //     Name:'职成教研',
+                //     Nodes: ['教研文件', '获奖信息', '教师研修', '资源中心']
+                // },
+                // {
+                //     Name:'社区教育',
+                //     Nodes: ['政策法规', '家庭教育', '社区动态', '老年教育', '通告公告']
+                // },
+                // {
+                //     Name:'远程教育',
+                //     Nodes: ['办学动态', '通知公告', '学生园地', '招生信息']
+                // },
+                // {
+                //     Name:'档案园地',
+                //     Nodes: []
+                // }
+            ],
+            bannerRobot: ''
         }
     },
     mounted () {
-        setInterval(this.bannerTo,8000)
+        this.bannerRobot = setInterval(this.bannerTo,8000)
+        this.render()
+    },
+    beforeDestroy () {
+        clearInterval(this.bannerRobot)
     },
     methods: {
         bannerTo () {
@@ -93,6 +102,12 @@ export default {
                 this.$refs.bannerImg[0].style.opacity = '1'
                 this.currentIndex = 0
             }
+        },
+        async render () {
+            let msg = await GetArticleChannelInfoList({
+                parentId: 0
+            })
+            this.navContent = msg.Data.ArticleCategoryResult
         }
     }
 }

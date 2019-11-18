@@ -8,6 +8,7 @@ module.exports = {
   publicPath,
   runtimeCompiler: true,
   // webpack-dev-server 配置
+  
   devServer: {
     publicPath,
     proxy: {
