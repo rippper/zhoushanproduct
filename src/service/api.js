@@ -13,6 +13,10 @@ export default {
   GetArticleInfoList: {
     url: API_URL + article + '/GetArticleInfoList',
     data: {}
+  },
+  ArticleContent: {
+    url: API_URL + article + '/ArticleContent',
+    data: {}
   }
 
 }

@@ -28,7 +28,7 @@
                 </ul>
             </div>
         </div>
-        <div class="menuList_hotnews">
+        <!-- <div class="menuList_hotnews">
             <div class="hotnews_title">
                 热点新闻
             </div>
@@ -53,7 +53,7 @@
                     </li>
                 </ul>
             </div>
-        </div>
+        </div> -->
     </div>
 </template>
 
@@ -94,13 +94,13 @@ export default {
         },
         titleText3: {
             type: String
-        },
-        hotnews: {
-            type: Array
-        },
-        newsreport: {
-            type: Array
         }
+        // hotnews: {
+        //     type: Array
+        // },
+        // newsreport: {
+        //     type: Array
+        // }
     },
     methods: {
     }
@@ -201,11 +201,11 @@ export default {
                 }
             }
         }
-        .menuList_hotnews{
+        // .menuList_hotnews{
 
-        }
-        .menuList_newsreport{
+        // }
+        // .menuList_newsreport{
 
-        }
+        // }
     }
 </style>

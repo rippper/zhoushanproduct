@@ -9,7 +9,7 @@
         <table class="cml-table">
             <tr v-for="(item, index) in listData" :key="index">
                 <th width="567">
-                    <router-link :to="{ path: '/articleDetail', query:{id: item.ArticleId, mid: mid}}" v-text="item.ArticleTitle"></router-link> 
+                    <router-link :to="{ path: '/newsdetail', query:{id: item.ArticleId}}" v-text="item.ArticleTitle"></router-link> 
                 </th>
                 <th width="110" v-text="item.ArticleCreateDate"></th>
             </tr>
@@ -32,9 +32,6 @@ export default {
         },
         Rows: {
              type: Number
-        },
-        mid: {
-            type: [String, Number]
         }
     },
     methods: {

@@ -2,6 +2,7 @@ import Vue from 'vue'
 import VueRouter from 'vue-router'
 import Home from '../views/Home.vue'
 import NewsList from '../views/NewsList.vue'
+import NewsDetail from '../views/NewsDetail.vue'
 
 Vue.use(VueRouter)
 
@@ -15,6 +16,11 @@ const routes = [
     path: '/newslist',
     name: 'newslist',
     component: NewsList
+  },
+  {
+    path: '/newsdetail',
+    name: 'newsdetail',
+    component: NewsDetail
   } // ,
   // {
   //   path: '/about',

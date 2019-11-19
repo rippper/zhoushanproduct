@@ -13,13 +13,125 @@
                 <li>
                     <router-link to="/">首页</router-link>
                 </li>
-                <li v-for="(item, index) in navContent" :key="index">
-                    <router-link :to="{ path: '/newslist', query: { 'Id':item.Id, 'CId': 0} }" v-text="item.Name"></router-link>
+                <li>
+                    <router-link :to="{ path: '/newslist', query: { 'Id':1142, 'CId': 0} }">学院概况</router-link>
                     <ul>
-                        <li v-for="(childitem, childindex) in item.Nodes" :key="childindex">
-                            <router-link :to="{ path: '/newslist', query: { 'Id':item.Id, 'CId': childitem.Id } }" v-text="childitem.Name"></router-link>
+                        <li>
+                            <router-link :to="{ path: '/newslist', query: { 'Id':1142, 'CId': 1136 } }">学院简介</router-link>
+                        </li>
+                        <li>
+                            <router-link :to="{ path: '/newsdetail' }">机构设置</router-link>
+                        </li>
+                        <li>
+                            <router-link :to="{ path: '/newslist', query: { 'Id':1142, 'CId': 1137 } }">学院动态</router-link>
+                        </li>   
+                        <li>
+                            <router-link :to="{ path: '/newslist', query: { 'Id':1142, 'CId': 1138 } }">杰出校友库</router-link>
+                        </li>
+                        <li>
+                            <router-link :to="{ path: '/newsdetail' }">学院领导</router-link>
                         </li>
                     </ul>
+                </li>  <!-- 学院概况 -->
+                <li>
+                    <router-link :to="{ path: '/newslist', query: { 'Id':1146, 'CId': 0} }">院务公开</router-link>
+                    <ul>
+                        <li>
+                            <router-link :to="{ path: '/newslist', query: { 'Id':1146, 'CId': 0 } }">通知公告</router-link>
+                        </li>
+                        <li>
+                            <router-link :to="{ path: '/newslist', query: { 'Id':1146, 'CId': 1159 } }">政策文件</router-link>
+                        </li>
+                        <li>
+                            <router-link :to="{ path: '/newslist', query: { 'Id':1146, 'CId': 1160 } }">收费标准</router-link>
+                        </li>
+                        <li>
+                            <router-link :to="{ path: '/newslist', query: { 'Id':1146, 'CId': 1161 } }">规章制度</router-link>
+                        </li>
+                        <li>
+                            <router-link :to="{ path: '/newslist', query: { 'Id':1146, 'CId': 1162 } }">招生专栏</router-link>
+                        </li>
+                        <li>
+                            <router-link :to="{ path: '/newslist', query: { 'Id':1146, 'CId': 1171 } }">要闻速览</router-link>
+                        </li>
+                    </ul>
+                </li> <!-- 院务公开 -->
+                <li>
+                    <router-link :to="{ path: '/newslist', query: { 'Id':1147, 'CId': 0} }">学院党建</router-link>
+                    <ul>
+                        <li>
+                            <router-link :to="{ path: '/newslist', query: { 'Id':1147, 'CId': 1163 } }">宣教动态</router-link>
+                        </li>
+                        <li>
+                            <router-link :to="{ path: '/newslist', query: { 'Id':1147, 'CId': 1164 } }">学习资料</router-link>
+                        </li>
+                        <li>
+                            <router-link :to="{ path: '/newslist', query: { 'Id':1147, 'CId': 1165 } }">心得交流</router-link>
+                        </li>
+                        <li>
+                            <router-link :to="{ path: '/newslist', query: { 'Id':1147, 'CId': 1166 } }">群众路线教育活动</router-link>
+                        </li>
+                    </ul>
+                </li> <!-- 学院党建 -->
+                <li>
+                    <router-link :to="{ path: '/newslist', query: { 'Id':1148, 'CId': 0} }">团委工会</router-link>
+                </li> <!-- 团委工会 -->
+                <li>
+                    <router-link :to="{ path: '/newslist', query: { 'Id':1149, 'CId': 0} }">职成教研</router-link>
+                    <ul>
+                        <li>
+                            <router-link :to="{ path: '/newslist', query: { 'Id':1149, 'CId': 1167 } }">教研文件</router-link>
+                        </li>
+                        <li>
+                            <router-link :to="{ path: '/newslist', query: { 'Id':1149, 'CId': 1168 } }">获奖信息</router-link>
+                        </li>
+                        <li>
+                            <router-link :to="{ path: '/newslist', query: { 'Id':1149, 'CId': 1169 } }">教师研修</router-link>
+                        </li>
+                        <li>
+                            <router-link :to="{ path: '/newslist', query: { 'Id':1149, 'CId': 1170 } }">资源中心</router-link>
+                        </li>
+                    </ul>
+                </li> <!-- 职成教研 -->
+                <li>
+                    <router-link :to="{ path: '/newslist', query: { 'Id':1150, 'CId': 0} }">社区教育</router-link>
+                    <ul>
+                        <li>
+                            <router-link :to="{ path: '/newslist', query: { 'Id':1142, 'CId': 1179 } }">政策法规</router-link>
+                        </li>
+                        <li>
+                            <a href="http://www.zsxxnet.cn/jtjy/jtjy.aspx" target="_blank">家庭教育</a>
+                        </li>
+                        <li>
+                            <router-link :to="{ path: '/newslist', query: { 'Id':1142, 'CId': 1180 } }">社区动态</router-link>
+                        </li>
+                        <li>
+                            <a href="http://www.zsxxnet.cn/UnivElders/" target="_blank">老年教育</a>
+                        </li>
+                        <li>
+                            <router-link :to="{ path: '/newslist', query: { 'Id':1142, 'CId': 1181 } }">通告公告</router-link>
+                        </li>
+                    </ul>
+                </li>
+                <li>
+                    <router-link :to="{ path: '/newslist', query: { 'Id':1151, 'CId': 0} }">远程教育</router-link>
+                    <ul>
+                        <li>
+                            <router-link :to="{ path: '/newslist', query: { 'Id':1151, 'CId': 1172 } }">办学动态</router-link>
+                        </li>
+                        <li>
+                            <router-link :to="{ path: '/newslist', query: { 'Id':1151, 'CId': 1173 } }">通告通知</router-link>
+                        </li>
+                        <li>
+                            <router-link :to="{ path: '/newslist', query: { 'Id':1151, 'CId': 1174 } }">学生园地</router-link>
+                        </li>
+                        <li>
+                            <router-link :to="{ path: '/newslist', query: { 'Id':1151, 'CId': 1175 } }">招生通知</router-link>
+                        </li>
+                    </ul>
+                </li>
+                <li>
+                    <router-link :to="{ path: '/newslist', query: { 'Id':1152, 'CId': 0} }">档案园地</router-link>
                 </li>
             </ul>
         </div>
@@ -27,7 +139,6 @@
 </template>
 
 <script>
-import { GetArticleChannelInfoList } from '../service/getData'
 export default {
     name: 'headerFix',
     data () {
@@ -44,49 +155,52 @@ export default {
             ],
             currentIndex: 0,
             navContent: [
-                // {
-                //     Name: '首页',
-                //     Nodes: []
-                // }, 
-                // {
-                //     Name: '学院状况',
-                //     Nodes: ['学院简介', '机构设置', '学院动态', '杰出校友库', '学院领导']
-                // }, 
-                // {
-                //     Name: '院务公开',
-                //     Nodes: ['通知公告', '政策文件', '收费标准', '规章制度', '招生专栏', '内部公告']
-                // }, 
-                // {
-                //     Name:'学院党建',
-                //     Nodes: ['宣教动态', '学习资料', '心得交流']
-                // }, 
-                // {
-                //     Name:'团委工会',
-                //     Nodes: []
-                // }, 
-                // {
-                //     Name:'职成教研',
-                //     Nodes: ['教研文件', '获奖信息', '教师研修', '资源中心']
-                // },
-                // {
-                //     Name:'社区教育',
-                //     Nodes: ['政策法规', '家庭教育', '社区动态', '老年教育', '通告公告']
-                // },
-                // {
-                //     Name:'远程教育',
-                //     Nodes: ['办学动态', '通知公告', '学生园地', '招生信息']
-                // },
-                // {
-                //     Name:'档案园地',
-                //     Nodes: []
-                // }
+                {
+                    Name: '学院状况',
+                    Id: 1142,
+                    Nodes: ['学院简介', '机构设置', '学院动态', '杰出校友库', '学院领导']
+                }, 
+                {
+                    Name: '院务公开',
+                    Id: 0,
+                    Nodes: ['通知公告', '政策文件', '收费标准', '规章制度', '招生专栏', '内部公告']
+                }, 
+                {
+                    Name:'学院党建',
+                    Id: 0,
+                    Nodes: ['宣教动态', '学习资料', '心得交流']
+                }, 
+                {
+                    Name:'团委工会',
+                    Id: 0,
+                    Nodes: []
+                }, 
+                {
+                    Name:'职成教研',
+                    Id: 0,
+                    Nodes: ['教研文件', '获奖信息', '教师研修', '资源中心']
+                },
+                {
+                    Name:'社区教育',
+                    Id: 0,
+                    Nodes: ['政策法规', '家庭教育', '社区动态', '老年教育', '通告公告']
+                },
+                {
+                    Name:'远程教育',
+                    Id: 0,
+                    Nodes: ['办学动态', '通知公告', '学生园地', '招生信息']
+                },
+                {
+                    Name:'档案园地',
+                    Id: 0,
+                    Nodes: []
+                }
             ],
             bannerRobot: ''
         }
     },
     mounted () {
         this.bannerRobot = setInterval(this.bannerTo,8000)
-        this.render()
     },
     beforeDestroy () {
         clearInterval(this.bannerRobot)
@@ -102,12 +216,6 @@ export default {
                 this.$refs.bannerImg[0].style.opacity = '1'
                 this.currentIndex = 0
             }
-        },
-        async render () {
-            let msg = await GetArticleChannelInfoList({
-                parentId: 0
-            })
-            this.navContent = msg.Data.ArticleCategoryResult
         }
     }
 }

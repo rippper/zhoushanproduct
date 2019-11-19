@@ -20,13 +20,28 @@
             <div class="pc-right r">
                 <div class="cm-lesson">
                     <div class="cm-lesson-top clearfix">
-                        <div class="cm-lesson-top1 l">
-                            全部文章
+                        <div class="cm-lesson-top1 l" v-text="titleText4 || titleText3"></div>
+                        <div class="cm-lesson-top2 l">
+                            <template>
+                                <span v-if="courseSort=='1'" class="on">最新  <img src="../assets/arrow-down4.png"> </span>
+                                <span v-else @click="courseSort='1', desc='CreatedDate', getArticleInfoList()">最新  <img src="../assets/arrow-down3.png"> </span>
+                            </template>
+                            <template>
+                                <span v-if="courseSort=='2'" class="on">最热  <img src="../assets/arrow-down4.png"></span>
+                                <span v-else @click="courseSort='2', desc='Click', getArticleInfoList()">最热  <img src="../assets/arrow-down3.png"> </span>
+                            </template>
+                        </div>
+                        <div class="cm-lesson-breadcrumb r">
+                            <span class="action_infor">您所在的位置是：</span>
+                            <el-breadcrumb separator-class="el-icon-arrow-right">
+                                <el-breadcrumb-item :to="{ path: '/' }">首页</el-breadcrumb-item>
+                                <el-breadcrumb-item v-text="titleText4 || titleText3"></el-breadcrumb-item>
+                            </el-breadcrumb>
                         </div>
                     </div>
                     <div class="cm-lesson-con">
                         <section>
-                            <article-table-list :list-data="articleList" :mid="CategoryId" :current-page="currentPage" :row="Rows"></article-table-list>
+                            <article-table-list :list-data="articleList" :current-page="currentPage" :row="Rows"></article-table-list>
                         </section>
                     </div>
                     <el-pagination
@@ -103,10 +118,13 @@ export default {
             sortShow2: true,
             sortShow: true,
             menuListShow: true,
+            courseSort: '1',
             titleText1: '文章',
-            titleText2: 'News',
-            titleText3: '新闻',
+            titleText2: 'Article',
+            titleText3: '',
+            titleText4: '',
             CategoryId: '',
+            desc: '',
             currentPage: 1,
             totalPageNumber: 0,
             Rows: 20
@@ -129,23 +147,52 @@ export default {
             let msg = await GetArticleInfoList({
                 CategoryId: this.CId == 0 ? this.ListId : this.CId,
                 Page: this.currentPage,
-                Rows: this.Rows
+                Rows: this.Rows,
+                Sort: this.desc, 
+                Order: 'desc'
             })
             let type = await GetArticleChannelInfoList({
                 parentId: 0
             })
-            console.log(type)
+            console.log(msg)
             type.Data.ArticleCategoryResult.forEach(item => {
                 if (item.Id == this.ListId) {
                     this.titleText3 = item.Name
                     this.menuData = item.Nodes
                 }
             })
+            if (this.CId != 0) {
+                this.menuData.forEach(item => {
+                    if (item.Id == this.CId) {
+                        this.titleText4 = item.Name
+                    }
+                })
+            } else {
+                this.titleText4 = ''
+            }
+            
             console.log(this.menuData)
             msg.Data.List.forEach(item => {
                 item.ArticleCreateDate = item.ArticleCreateDate.substr(0, 10)
             })
             this.articleList = msg.Data.List
+        },
+        async getArticleInfoList () {
+            let data = await GetArticleInfoList({ 
+                CategoryId: this.CId == 0 ? this.ListId : this.CId,
+                Page: 1,
+                Rows: this.Rows, 
+                Sort: this.desc, 
+                Order: 'desc'
+            })
+            this.currentPage = 1
+            data.Data.List.forEach(item => {
+                item.ArticleCreateDate = item.ArticleCreateDate.substr(0, 10)
+            })
+            if (data.IsSuccess) {
+                this.articleList = data.Data.List
+                this.totalPageNumber = Number(data.Data.TotalCount)
+            }
         }
     },
     watch: {
@@ -200,11 +247,11 @@ export default {
                             font-weight: bold;
                         }
                         .cm-lesson-top2 {
-                            margin-left: 35px;
+                            margin-left: 15px;
                             height: 42px;
                             line-height: 42px;
                             span {
-                                margin-left: 20px;
+                                margin-left: 10px;
                                 cursor: pointer;
                                 &.on{
                                     color: #ff9c08;
@@ -224,6 +271,22 @@ export default {
                                     width: 16px;
                                     height: 17px;
                                 }
+                            }
+                        }
+                        .cm-lesson-breadcrumb{
+                            margin-right: 30px;
+                            .action_infor{
+                                float:left;
+                                height:42px;
+                                line-height: 42px;
+                            }
+                            .el-breadcrumb{
+                                float:left;
+                                display: inline-block;
+                            }
+                            .el-breadcrumb__item{
+                                height:42px;
+                                line-height: 42px;
                             }
                         }
                     }

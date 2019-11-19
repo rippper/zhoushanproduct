@@ -11,6 +11,11 @@ export const GetArticleChannelInfoList = (data) => fetch.post(Api.GetArticleChan
  */
 export const GetArticleInfoList = (data) => fetch.post(Api.GetArticleInfoList.url,
   { ...Api.GetArticleInfoList.data, ...data })
+/*
+ * 获取文章详情内容 
+ */
+export const ArticleContent = (data) => fetch.post(Api.ArticleContent.url,
+  { ...Api.ArticleContent.data, ...data })
 
 /* 将所有的API封装起来 */
 const allApi = {}
