@@ -3,6 +3,8 @@ import VueRouter from 'vue-router'
 import Home from '../views/Home.vue'
 import NewsList from '../views/NewsList.vue'
 import NewsDetail from '../views/NewsDetail.vue'
+import OnlineShow from '../views/OnlineShow.vue'
+import OnlineDetail from '../views/OnlineDetail.vue'
 
 Vue.use(VueRouter)
 
@@ -21,6 +23,16 @@ const routes = [
     path: '/newsdetail',
     name: 'newsdetail',
     component: NewsDetail
+  },
+  {
+    path: '/onlineshow',
+    name: 'onlineshow',
+    component: OnlineShow
+  },
+  {
+    path: '/onlinedetail',
+    name: 'onlinedetail',
+    component: OnlineDetail
   } // ,
   // {
   //   path: '/about',

@@ -28,32 +28,6 @@
                 </ul>
             </div>
         </div>
-        <!-- <div class="menuList_hotnews">
-            <div class="hotnews_title">
-                热点新闻
-            </div>
-            <div class="hotnews_listpart">
-                <ul>
-                    <li v-for="(item, index) in hotnews" :key="index">
-                        [<span v-text="item.label"></span>]
-                        <a href="javascript:;" v-text="item.content"></a>
-                    </li>
-                </ul>
-            </div>
-        </div>
-        <div class="menuList_newsreport">
-            <div class="newsreport_title">
-                最新公告
-            </div>
-            <div class="newsreport_listpart">
-                <ul>
-                    <li v-for="(item, index) in newsreport" :key="index">
-                        [<span v-text="item.label"></span>]
-                        <a href="javascript:;" v-text="item.content"></a>
-                    </li>
-                </ul>
-            </div>
-        </div> -->
     </div>
 </template>
 
@@ -95,12 +69,6 @@ export default {
         titleText3: {
             type: String
         }
-        // hotnews: {
-        //     type: Array
-        // },
-        // newsreport: {
-        //     type: Array
-        // }
     },
     methods: {
     }
@@ -201,11 +169,5 @@ export default {
                 }
             }
         }
-        // .menuList_hotnews{
-
-        // }
-        // .menuList_newsreport{
-
-        // }
     }
 </style>

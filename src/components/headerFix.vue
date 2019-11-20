@@ -224,7 +224,7 @@ export default {
 <style lang="scss">
 @import "../style/mixin";
     .headerpart{
-        z-index: 2;
+        z-index: 10;
         width: 1042px;
         margin: 0 auto;
         position: relative;
@@ -295,6 +295,7 @@ export default {
                         overflow: hidden;
                         transition: 1s;
                         background: #fff;
+                        z-index: 5;
                         li{
                             text-align: center;
                             height: 100%;

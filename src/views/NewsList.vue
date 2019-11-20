@@ -10,8 +10,6 @@
                     :go-menu-list="goMenuList"
                     :sort-title="sortShow"
                     :menu-list-show="menuListShow"
-                    :hotnews="hotnews"
-                    :newsreport="newsreport"
                     :title-text1="titleText1"
                     :title-text2="titleText2"
                     :title-text3="titleText3"
@@ -71,50 +69,6 @@ export default {
             CId: this.$route.query.CId,
             menuData: [],
             articleList: [],
-            hotnews: [
-                {
-                    label: '通知公告',
-                    content: '省师训管理平台教师个人帐'
-                },
-                {
-                    label: '学院简介',
-                    content: '省师训管理平台教师个人帐'
-                },
-                {
-                    label: '通知公告',
-                    content: '省师训管理平台教师个人帐'
-                },
-                {
-                    label: '学院动态',
-                    content: '省师训管理平台教师个人帐'
-                },
-                {
-                    label: '通知公告',
-                    content: '省师训管理平台教师个人帐'
-                }
-            ],
-            newsreport: [
-                {
-                    label: '通知公告',
-                    content: '省师训管理平台教师个人帐'
-                },
-                {
-                    label: '通知公告',
-                    content: '省师训管理平台教师个人帐'
-                },
-                {
-                    label: '通知公告',
-                    content: '省师训管理平台教师个人帐'
-                },
-                {
-                    label: '通知公告',
-                    content: '省师训管理平台教师个人帐'
-                },
-                {
-                    label: '通知公告',
-                    content: '省师训管理平台教师个人帐'
-                }
-            ],
             sortShow2: true,
             sortShow: true,
             menuListShow: true,
@@ -218,7 +172,7 @@ export default {
         max-width: 1366px;
         margin: 0 auto;
         background: url('../assets/zsbg.jpg') no-repeat;
-        background-size: 100%;
+        background-size: cover;
         .newslist_bodypart{
             width: 1052px;
             margin: 20px auto 0;
@@ -282,7 +236,6 @@ export default {
                             }
                             .el-breadcrumb{
                                 float:left;
-                                display: inline-block;
                             }
                             .el-breadcrumb__item{
                                 height:42px;

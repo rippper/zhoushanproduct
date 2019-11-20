@@ -34,7 +34,7 @@
 </template>
 
 <script>
-import { wordsL } from '../service/wordsLimit'
+import { wordsL } from '../service/helpPlugin'
 export default {
     name: 'specialTeach',
     props: {

@@ -133,7 +133,7 @@
                     <div class="home_title_label">
                         校园风光
                     </div>
-                    <div class="home_title_loadmore">+ MORE</div>
+                    <div class="home_title_loadmore"><router-link to="/onlineshow">+ MORE</router-link></div>
                 </div>
                 <div class="home_listroll_list">
                     <ul ref="rollpart" @mouseenter="rollStop" @mouseleave="rollStart">
@@ -1180,10 +1180,12 @@ export default {
                     }
                     .home_title_loadmore{
                         float: right;
-                        color: #116abf;
-                        font-size: 12px;
-                        font-weight: bold;
                         margin-right: 16px; 
+                        a{
+                            color: #116abf;
+                            font-size: 12px;
+                            font-weight: bold;
+                        }
                     }
                 }
                 .home_listroll_list{

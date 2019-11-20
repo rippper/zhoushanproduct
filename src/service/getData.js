@@ -16,6 +16,16 @@ export const GetArticleInfoList = (data) => fetch.post(Api.GetArticleInfoList.ur
  */
 export const ArticleContent = (data) => fetch.post(Api.ArticleContent.url,
   { ...Api.ArticleContent.data, ...data })
+/*
+ * 获取展厅列表内容 
+ */
+export const ProductionInfoList = (data) => fetch.post(Api.ProductionInfoList.url,
+  { ...Api.ProductionInfoList.data, ...data })
+/**
+ * 网上展厅详细内容
+ */
+export const ProductionDetail = (data) => fetch.post(Api.ProductionDetail.url,
+  { ...Api.ProductionDetail.data, ...data })
 
 /* 将所有的API封装起来 */
 const allApi = {}
